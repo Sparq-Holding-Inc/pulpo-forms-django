@@ -1,0 +1,28 @@
+         <div class="col-md-5">
+              <select  class="form-control"
+                ng-options="option.field_id as option.text for option in editor.questions"
+                ng-change="editor.selectFieldOnCondition(condition)"
+                ng-model="condition.field">                  
+               </select> 
+        </div>
+        <div class="col-md-3">
+            <select  class="form-control" 
+              ng-options="option for option in condition.operatorsList" 
+              ng-model="condition.comparator" >
+             </select>
+        </div>
+
+        <div class="col-md-3" ng-show="editor.isInputType(condition.operandKind)">
+            <input  class="form-control" type="text" ng-model="condition.value" /> 
+        </div>
+        <div class="col-md-3" ng-show="editor.isOptionsType(condition.operandKind)">
+            <select  class="form-control"
+                ng-options="option.id as option.label for option in condition.options"
+                ng-model="condition.value">                  
+            </select>
+        </div>
+        <div class="col-md-1 pull-right">
+            <button ng-click="editor.removeLogicCondition($index)" class="btn btn-primary pull-right" >
+              <span class="glyphicon glyphicon-minus-sign" ></span>
+            </button> 
+       </div>

@@ -1,0 +1,24 @@
+{%extends 'fields/field_properties_base.html' %}
+{%block validations%}
+    <div class="form-group">
+        <label for="FieldType">Checkbox Options:</label>
+        <div ng-repeat = "option in editor.selectedField.options">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                    <button class="btn pull-right" ng-click = "editor.deleteOption($index)">
+                         <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                    </span>
+                    <input class="form-control" 
+                           ng-model="editor.selectedField.options[editor.selectedField.options.indexOf(option)].label" 
+                           required/>
+                </div>  
+            </div>               
+        </div>
+        <button type="button" class="btn btn-default btn-xs" ng-click = "editor.addOption()" >
+                <span class="glyphicon glyphicon-star"></span> Add Options
+        </button>
+
+    </div>
+{%endblock%}

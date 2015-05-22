@@ -1,0 +1,65 @@
+{% verbatim %}
+
+<div class="container" style="padding: 0px">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-primary">
+                <div class="panel-heading text-center">
+                    <h1 class="text-center"><span class="glyphicon glyphicon-list"></span> {{version.form}}</h1>
+                </div>
+                <h1 class="text-center" ng-show="errLoading">There was an error loading the form</h1>
+                <growl-notifications>
+                    <div ng-repeat="(id, notification) in notifications track by id">
+                        <growl-notification class="fading dashboard-notification">
+                          <strong style="color:#5BC0DE">Notification:<br></strong>{{notification}}
+                        </growl-notification>
+                    </div>
+                </growl-notifications>
+                <form role="form" name="dynForm" ng-submit="save(dynForm.$valid)" class="dyn-form panel-body" novalidate>
+                    <div style="padding-top:30px;" ng-class="{ 'has-error' : userFieldForm.email.$invalid }">
+                        <div class="text-center">
+                            <h3>{{selectedPage.subTitle}}</h3>
+                        </div>
+                        <div ng-repeat="question in selectedPage.fields" class="form-group">
+                            <ng-form>
+                                <div ng-include="base_url + 'field/' + question.field_type"></div>
+                            </ng-form>
+                        </div>
+                    </div>
+                     <div class="jumbotron" style="padding-top:0px" ng-show ="version.captcha &&!canNext()" >
+                        <div class="container">
+                            <h3 style="margin-bottom:50px">
+                                <span class="label label-success">
+                                    <captcha field1="{{field1}}" operator="{{operator}}" field2="{{field2}}"></captcha>
+                                </span>
+                            </h3>
+                            <div class="row" > 
+                                <input type="text" class="form-control" ng-model="resultado" ng-change = "enviarCaptcha(resultado)" />
+                            </div>
+                             <div class="text-right">
+                             </div>
+                        </div>
+                    </div>
+                    <div style="padding-bottom:50px;">
+                        <!-- page navegation buttons -->
+                        <button type="button" ng-click="previous()" ng-show="canPrevious()"
+                            class="btn btn-primary pull-left">
+                            <span class="glyphicon glyphicon-arrow-left">
+                        </button>
+                        <button type="button" ng-click="next()" ng-show="canNext()"
+                            class="btn btn-primary pull-right">
+                            <span class="glyphicon glyphicon-arrow-right">
+                        </button>
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" ng-disabled="dynForm.$invalid || disableSubmit || submitting" class="btn btn-primary" ng-show="!canNext()">
+							<span ng-show="submitting">Please Wait...</span>
+							<span ng-show="!submitting">Submit</span>
+						</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endverbatim %}

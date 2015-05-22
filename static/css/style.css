@@ -1,0 +1,187 @@
+    /* Custom page style */
+.page-background{
+    background-color: #777;
+}
+.container-white{
+    background-color: #fbfbe9;
+    height: 100%;
+}
+.question-even{
+    background-color: transparent;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none;
+}
+
+.label-as-badge {
+    border-radius: 1em !important;
+}
+
+.survey-list {
+    margin-bottom: 2px !important;
+}
+
+div.filter-accordion .panel-default > .panel-heading {
+    background-color: #5BC0DE !important;
+}
+
+growl-notifications{
+  position: fixed;
+  top: 50px;
+  right: 10px;
+}
+growl-notification{
+    z-index: 9999 !important;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px 30px;
+    width: 250px;
+    display: block;
+    border: 0px;    
+    border-left-width: 5px;
+    border-radius: 3px;
+    min-height: 275px;
+    color: white;
+}
+
+growl-notification.dashboard-notification{
+    min-height: 50px;
+    border: 1px solid #5BC0DE;
+    border-bottom: 5px solid #5BC0DE;
+}
+
+growl-notification.fading.ng-move{
+    opacity: 0;
+    -webkit-transition: 1s linear all; /* Safari/Chrome */
+    transition: 1s linear all; /* All other modern browsers and IE10+ */
+}
+
+growl-notification.fading.ng-move.ng-move-active {
+    opacity: 1;
+}
+growl-notification.fading {
+    opacity: 1;
+    -webkit-transition: 1s linear all; /* Safari/Chrome */
+    transition: 1s linear all; /* All other modern browsers and IE10+ */
+}
+
+growl-notification.fading.ng-leave.ng-leave-active {
+    opacity: 0;
+}
+    /* Background gradient effect */
+.radial-center { 
+    /* fallback */ 
+    background-color: #97bbe0;
+    background-position: center center; 
+    background-repeat: no-repeat; 
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(radial, center center, 0, center center, 460, from(#fff), to(#97bbe0)); 
+    /* Safari 5.1+, Chrome 10+ */ 
+    background: -webkit-radial-gradient(circle, #fff, #97bbe0); 
+    /* Firefox 3.6+ */ 
+    background: -moz-radial-gradient(circle, #fff, #97bbe0); 
+    /* IE 10 */ 
+    background: -ms-radial-gradient(circle, #fff, #97bbe0); 
+}
+    
+    /* Form fields style */
+.dyn-form *.ng-invalid {
+    background-color: #ffdfe1;
+}
+
+/*
+.dyn-form input.ng-valid {
+    background-color: #d6ffd9;
+}
+.dyn-form textarea.ng-valid {
+    background-color: #d6ffd9;
+}
+*/
+
+.list-wrapper { font-family: courier; }
+.list-title { font-weight: bold; font-size: 1.2em; margin-bottom: .5em }
+.list-body { padding-left: 3em; }
+.list-item { padding: 1em; margin-bottom: .3em;  solid; width: 100%; cursor: pointer; }
+.field-color{  
+        color:#000;
+        -webkit-transition: background 0.25s linear;
+        -moz-transition: background 0.25s linear;
+        -ms-transition: background 0.25s linear;
+        -o-transition: background 0.25s linear;
+        transition: background 0.25s linear;
+}
+.field-color:hover { background-color: #CECEF6; color:#000;  }
+.selected-field { background-color: #CECEF6; }
+.selected-page { background-color: #F2F2F2; }
+
+
+ul.combo_order li{ display: inline; }
+
+/*Panel tabs*/
+.panel-tabs {
+    position: relative;
+    bottom: 30px;
+    clear:both;
+    border-bottom: 1px solid transparent;
+}
+
+.panel-tabs > li {
+    float: left;
+    margin-bottom: -1px;
+}
+
+.panel-tabs > li > a {
+    margin-right: 2px;
+    margin-top: 4px;
+    line-height: .85;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+    color: #ffffff;
+}
+
+.panel-tabs > li > a:hover {
+    border-color: transparent;
+    color: #ffffff;
+    background-color: transparent;
+}
+
+.panel-tabs > li.active > a,
+.panel-tabs > li.active > a:hover,
+.panel-tabs > li.active > a:focus {
+    color: #fff;
+    cursor: default;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background-color: rgba(255,255,255, .23);
+    border-bottom-color: transparent;
+}
+
+.success-message{
+   color: blue; 
+   position: relative;
+   text-align: center;
+
+}
+
+.chart {
+ width: 500px;
+ height: 500px;
+ }
+
+.map-canvas
+{
+	width: 435px;
+	height: 315px;
+}
+.map-canvas-visor
+{
+	width: 100%;
+	height: 315px;
+}
+.angular-google-map-container { height: 400px; }
+/**buttons styles*/
+
+.tridimensonal-button{
+    text-shadow: black 5px 3px 3px
+}

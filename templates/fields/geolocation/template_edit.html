@@ -1,0 +1,14 @@
+{%extends 'fields/field_edit_template_base.html' %}
+
+{%block field%}
+{% verbatim %}    
+	 <button style="border:none;background:none" ng-show="question.tooltip!=undefined && question.tooltip!=''" tooltip="{{question.tooltip}}" tooltip-trigger tooltip-placement="top">
+		<span class="glyphicon glyphicon-info-sign"></span>
+	</button> 
+	<div class="content">
+	    <div id={{question.field_id}} class="map-canvas" style="width: 100%;">
+	    	{{editor.loadmap(question)}}
+	    </div>
+	</div>
+{% endverbatim %}
+{%endblock%}

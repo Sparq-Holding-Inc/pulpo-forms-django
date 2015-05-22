@@ -1,0 +1,77 @@
+{% load staticfiles sekizai_tags load_fields_assets %}
+<!DOCTYPE html>
+<html ng-app="dynamicFormsFrameworkAdmin" ng-controller="PreviewCtrl as visor">
+	<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% verbatim %}
+        <title>Django surveys - {{version.form}}</title>
+        {% endverbatim %}
+        {% addtoblock "css" %}
+        <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+        {% endaddtoblock %}
+        {% addtoblock "css" %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        {% endaddtoblock %}
+        {% render_block "css" postprocessor "compressor.contrib.sekizai.compress" %}
+	</head>
+	<body class="radial-center">
+        <script type="text/javascript">
+            var instance = "{{instance}}";
+            var base_url = "{{base_url}}";
+        </script>
+        <div ng-include="'{{base_url}}preview_template'"></div>
+    </body>
+
+    {% addtoblock "js" %}
+    <script src={% static "jquery/js/jquery-2.1.3.min.js" %}></script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+    <script src={% static "bootstrap/js/bootstrap.js" %}></script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+    <script src={% static "angular/angular-file-upload-shim.js" %}></script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+    <script src={% static "angular/angular.js" %}></script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+    <script src={% static "angular/angular-resource.min.js" %}></script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+    <script src={% static "angular/angular-file-upload.js" %}></script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+    <script src={% static "angular/captcha.js" %}></script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+    <script src={% static "angular/checklist-model.js" %}></script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+    <script src={% static "angular/sortable.js" %}></script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+    <script src={% static "angular/angular-charts.min.js" %}></script>   
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+    <script src={% static "bootstrap/js/ui-bootstrap.min.js" %}></script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+    <script src={% static "angular/angular-growl-notifications.min.js" %}></script>
+    {% endaddtoblock %}
+    {% fields_assets_block %}
+
+    {% addtoblock "js" %}
+    <script src={% static "js/app.js" %}></script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+    <script src={% static "js/services/resources.js" %}></script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+    <script src={% static "js/previewCtrl.js" %}></script>
+    {% endaddtoblock %}
+
+    {% render_block "jsUnc" %}
+    {% render_block "js" postprocessor "compressor.contrib.sekizai.compress" %}
+    
+</html>

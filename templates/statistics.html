@@ -1,0 +1,117 @@
+{%extends 'base.html' %}
+{% load staticfiles sekizai_tags load_fields_assets %}
+
+{%block content%}
+    {% verbatim %}
+    <div id="page-wrapper" ng-controller="statisticsCtrl as s">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="filter-accordion">
+                    <accordion class="col-md-10">
+                        <accordion-group is-open="status.open">
+                            <accordion-heading>
+                                <div style="cursor:pointer;">
+                                    <label>Filter responses </label><i class="pull-right glyphicon"
+                                        ng-class="{'glyphicon-chevron-down': status.open,
+                                                   'glyphicon-chevron-right': !status.open}"></i>
+                                </div>
+                            </accordion-heading>
+                          <div>Add filters for the responses:</div>
+                            <div ng-repeat="filter in filters" class="form-inline" style="margin-top:5px;">
+                                <div class="form-group">
+                                    <label for="field{{$index}}">Field</label>
+                                     <select id="field{{$index}}" class="form-control"
+                                        ng-options="id as value.conf.title for (id,value) in s.values"
+                                        ng-model="filter.field" >
+                                    </select> 
+                                </div>
+                                <div class="form-group" style="margin-left:5px;" ng-if="filter.field">
+                                    <label for="type{{$index}}">Filter type</label>
+                                    <select ng-if="s.values[filter.field].field_type == 'SelectField'"
+                                            id="type{{$index}}" class="form-control"
+                                            ng-model="filter.type"
+                                            ng-options="option for option in ['equals']">
+                                    </select>
+                                    <select ng-if="s.values[filter.field].field_type == 'CheckboxField'"
+                                            id="type{{$index}}" class="form-control"
+                                            ng-model="filter.type"
+                                            ng-options="option for option in ['contains', 'equals']">
+                                    </select>
+                                    <select ng-if="s.values[filter.field].field_type == 'NumberField'"
+                                            id="type{{$index}}" class="form-control"
+                                            ng-model="filter.type"
+                                            ng-options="operator.short as operator.label for operator in number_operators">
+                                    </select>
+                                </div>
+                                <div class="form-group" style="margin-left:5px;" ng-if="filter.field">
+                                    <label for="value{{$index}}">Value</label>
+                                    <input ng-if="s.values[filter.field].field_type != 'SelectField' &&
+                                            s.values[filter.field].field_type != 'CheckboxField'"
+                                        id="value{{$index}}" class="form-control" type="text" ng-model="filter.value" />
+                                    <select ng-if="s.values[filter.field].field_type == 'SelectField' ||
+                                            s.values[filter.field].field_type == 'CheckboxField'"
+                                            id="field{{$index}}" class="form-control" ng-options="id as value for (id, value) in field_options[filter.field]"
+                                            ng-model="filter.value">
+                                    </select>
+                                </div>
+                                <i ng-if="$index != filters.length-1" class="glyphicon glyphicon-remove pull-right"
+                                    style="cursor:pointer;" ng-click="removeFilter($index)"></i>
+                                <i ng-if="$index == filters.length-1" class="glyphicon glyphicon-plus pull-right"
+                                    style="cursor:pointer;" ng-click="addFilter()"></i>
+                            </div>
+                            <div class="row" style="margin-top:15px;margin-right:5px">
+                                <div class="form-group pull-right">
+                                    <button class="btn btn-default btn-sm" ng-click="s.getStatistics()">Apply</button>
+                                    <button class="btn btn-default btn-sm" ng-click="s.Discard()">Discard</button>
+                                </div>
+                            </div>
+                        </accordion-group>
+                    </accordion>
+                </div>
+            </div>
+            <div class="row">
+                <div class="list-group col-md-12">
+                    <ul>
+                        <li ng-cloak ng-repeat="field in s.values">
+                            <h2>Field {{field.id}}  
+                                <select class="btn btn-primary col-md-offset-1" ng-model="field.chart" ng-options="type for type in chart_types"></select>
+                            </h2>
+                            <div class="row" ng-include="'../field_statistic/'+field.field_type"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {%endverbatim%}
+{%endblock%}
+
+{% block scripts  %}
+    {% addtoblock "js" %}
+    <script src={% static "angular/lodash.min.js" %}></script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+    <script src={% static "angular/bluebird.js" %}></script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+    <script src={% static "bootstrap/js/ui-bootstrap.min.js" %}></script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+    <script src={% static "angular/FileSaver.js" %}></script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+    <script src={% static "angular/sortable.js" %}></script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+    <script src={% static "js/app.js" %}></script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+    <script src={% static "js/services/resources.js" %}></script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+    <script src={% static "js/statisticsCtrl.js" %}></script>
+    {% endaddtoblock %}
+
+    {% fields_assets_block %}
+{%endblock%}
+

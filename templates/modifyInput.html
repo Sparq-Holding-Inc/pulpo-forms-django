@@ -1,0 +1,62 @@
+{%verbatim%}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Field</h3>
+        <span class="pull-right">
+            <!-- Tabs -->
+            <ul id="myTab" class="nav panel-tabs">
+                <li><a href="#tab1" data-toggle="tab">Palette</a></li>
+                <li class="active"><a href="#tab2" data-toggle="tab">Properties</a></li>
+                <li><a href="#tab3" data-toggle="tab">Config</a></li>
+            </ul>
+        </span>
+    </div>
+    <div class="panel-body pre-scrollable" style="width:100%;max-height:400px;overflow:auto;">
+        <div class="tab-content">
+            <div class="tab-pane" id="tab1">
+                <div ng-include="'palette'"></div>
+            </div>
+            <div class="tab-pane active" id="tab2">
+                 <div  ng-include="'field_properties/'+ editor.getSelectedField()"></div>    
+            </div>
+            <div class="tab-pane" id="tab3">
+                <div class="form-group">
+                    <button type="button" class="btn btn-danger btn-md tridimensonal-button"  
+                        data-toggle="modal" data-target="#myToolTipModal" ng-disabled="editor.selectedField.tooltip==undefined">
+                      <span class="glyphicon glyphicon-star"></span> Configure ToolTip
+                    </button>
+                 </div> 
+                  <div class="form-group">
+                    <button type="button" class="btn btn-danger btn-md tridimensonal-button"  ng-click="editor.configLogicField(editor.selectedField.field_id)" data-toggle="modal" data-target="#myLogicModal" ng-disabled="editor.selectedField.tooltip==undefined">
+                      <span class="glyphicon glyphicon-star"></span> Configure Field Logic
+                    </button>
+                 </div>  
+                 <div class="form-group">
+                    <button type="button" class="btn btn-danger btn-md tridimensonal-button"  ng-click="editor.configLogicPage(editor.selectedPage)" data-toggle="modal" data-target="#myLogicPageModal" ng-disabled="editor.selectedPage==undefined">
+                      <span class="glyphicon glyphicon-star"></span> Configure Page Logic
+                    </button>
+                 </div>
+                 <div class="form-group">
+                    <div class="form-group">
+        				<button type="button" class="btn btn-danger btn-md tridimensonal-button"
+        					ng-click="editor.configAfterSubmit()"
+        					data-toggle="modal" data-target="#myPostSubmitModal">
+        					<span class="glyphicon glyphicon-star"></span> Configure Post-Submit Action
+        				</button>
+        			</div>
+                    <div class="radio-inline">
+                        <lable>
+                            <input type="radio" ng-model="editor.version.captcha" ng-value="true"> Enable captcha
+                        </lable>
+                    </div>
+                    <div class="radio-inline">
+                        <lable>
+                            <input type="radio" ng-model="editor.version.captcha" ng-value="false"> Disable captcha
+                        </lable>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endverbatim%}

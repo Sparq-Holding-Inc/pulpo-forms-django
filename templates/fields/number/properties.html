@@ -1,0 +1,19 @@
+{%extends 'fields/field_properties_base.html' %}
+{%block validations%}
+    <div class="form-group">
+        <label>Min:</label>
+        <input type="number"
+               class="form-control"
+               ng-model="editor.selectedField.validations.min_number" 
+               ng-value="true" 
+               ng-blur="editor.checkValidations(editor.selectedField)"/>
+    </div>
+    <div class="form-group">
+        <label>Max:</label>
+        <input type="number"
+               class="form-control"
+               ng-model="editor.selectedField.validations.max_number" 
+               ng-value="true" 
+               ng-blur="editor.checkValidations(editor.selectedField)"/>
+    </div>
+{%endblock%}

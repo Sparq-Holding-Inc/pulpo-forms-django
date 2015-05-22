@@ -1,0 +1,32 @@
+{% verbatim %} 
+    <div ng-cloak ac-chart="field.chart" 
+          ac-data= "field.data" 
+          ac-config= "field.conf" 
+          class="chart col-md-7">
+    </div>
+    <div ng-cloak class="col-md-5">
+        <table class="table table-bordered">
+            <tbody>
+               
+               <tr>
+                    <td>Type</td>
+                    <td>{{field.type}}</td>    
+                </tr> 
+                <tr>
+                    <td>Answered fields</td>
+                    <td>{{field.tf}}</td>    
+                </tr>
+                <tr>
+                    <td>Empty fields</td>
+                    <td>{{field.tnf}}</td>
+                </tr>
+                <tr>
+                    <td>Required</td>
+                    <td>{{field.req}}</td>    
+                </tr>
+            </tbody>
+        </table>
+         <a type="button" class="btn btn-primary" href="export-pdf/{{s.formId}}/{{s.versionNumber}}/{{field.id}}">Export PDF
+        </a>
+    </div>
+{% endverbatim %}

@@ -1,0 +1,10 @@
+{%extends 'fields/field_properties_base.html' %}
+{%block validations%}
+    <div class="form-group">
+        Length: 
+        <input type="number" 
+               ng-model="editor.selectedField.validations.max_len_text" 
+               ng-value="true" 
+               ng-blur="editor.checkValidations(editor.selectedField)">
+    </div>
+{%endblock%}

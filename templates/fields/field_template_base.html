@@ -1,0 +1,11 @@
+<div ng-show="showValues[question.field_id]">
+	{%block label%}
+		{%verbatim%}
+			<label class="{{question.field_type}}">{{question.text}}
+			<span style="color:red;" ng-show="question.required">*</span>
+			</label>
+		{%endverbatim%}
+	{%endblock%}
+	{%block field%}
+	{%endblock%}
+</div>

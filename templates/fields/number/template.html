@@ -1,0 +1,18 @@
+{%extends 'fields/field_template_base.html' %}
+{%block field%}
+    {% verbatim %}
+        <button style="border:none;background:none" 
+                ng-show="question.tooltip!=undefined && question.tooltip!=''" 
+                tooltip="{{question.tooltip}}" tooltip-trigger tooltip-placement="top">
+            <span class="glyphicon glyphicon-info-sign"></span>
+        </button>
+        <input type="number" class="form-control NumberField" 
+                ng-model="question.answer[0]" 
+                ng-change="updateDependencies(question.field_id)"
+            	ng-required="question.required && showValues[question.field_id]"
+                min="{{question.validations.min_number}}"
+                max="{{question.validations.max_number}}"
+                ng-init="question.answer[0] ? question.answer[0] : question.answer[0]=null"
+        />
+    {% endverbatim %} 
+{%endblock%}

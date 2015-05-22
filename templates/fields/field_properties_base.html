@@ -1,0 +1,34 @@
+<div class="panel panel-danger" ng-model="editor.selectedField">
+    <div class="panel-heading">
+        Field Properties
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <label for="FieldLabel">Field Label</label>
+            <input  class="form-control"  ng-model="editor.selectedField.text">
+        </div>
+        <div class="form-group">
+            <label for="FieldType">Field Type</label>
+            {%verbatim%}
+            <span>{{editor.selectedField.field_type}}</span>
+            {%endverbatim%}
+        </div>
+        <div class="form-group" style="position:relative;">
+            <div class="radio-inline">
+                <lable>
+                    <input type="radio" ng-model="editor.selectedField.required" ng-value="true"> Required
+                </lable>           
+            </div>
+            <div class="radio-inline">
+                <lable>
+                    <input type="radio"
+                        ng-model="editor.selectedField.required" ng-value="false">
+                    Not Required
+                </lable>           
+            </div>
+        </div>
+        
+        {%block validations%}
+        {%endblock%}         
+    </div>
+</div>

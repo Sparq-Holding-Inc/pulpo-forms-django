@@ -1,0 +1,13 @@
+{%extends 'fields/field_template_base.html' %}
+{%block field%}
+    {% verbatim %}
+        <button style="border:none;background:none" ng-show="question.tooltip!=undefined && question.tooltip!=''" tooltip="{{question.tooltip}}" tooltip-trigger tooltip-placement="top">
+            <span class="glyphicon glyphicon-info-sign"></span>
+        </button>
+    
+    <textarea class="form-control TextAreaField" type="text" ng-model="question.answer[0]"
+        ng-required="question.required && showValues[question.field_id]"
+    	ng-maxlength="{{question.validations.max_len_text}}"
+    />
+    {% endverbatim %} 
+{%endblock%}

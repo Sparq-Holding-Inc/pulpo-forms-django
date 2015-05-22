@@ -1,0 +1,61 @@
+{% verbatim %} 
+<div id="myLogicPageModal" class="modal fade modal-primary" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog modal-lg" style="width:60%">
+          <div class="modal-content">
+              <div class="modal-header">
+                <h1><span class="label label-default">Page Logic</span></h1>
+              </div>
+              <div class="modal-body">
+                              <!-- <div class="container"> -->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4><span class="label label-primary">Add conditions to this page:</span></h4>
+                                        </div>
+                                        </br>
+                                        </br>
+                                        </br>
+                                    </div>
+                                    <div class="row" style="margin-bottom:50px">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-2">
+                                                      <select  class="form-control" ng-options="option for option in ['Show', 'Hide']" ng-model="editor.logicField.operation" >
+                                                          
+                                                       </select> 
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <h4 class="text-center">this page if</h4>
+                                                </div>
+                                                <div class="col-md-2">
+                                                  <select  class="form-control" ng-options="option for option in ['All', 'Any']" ng-model="editor.logicField.action" > </select> 
+                                                </div>
+                                                <div class="col-md-4"> 
+                                                  <h4>of the following conditions match: </h4>
+                                                </div>        
+                                    </div>       
+                                    <div class="row" style="margin-bottom:30px" ng-repeat="condition in editor.logicField.conditions">
+                                        <div  ng-include="'field_condition'" style="margin-bottom:10px" ></div>                                      
+                                    </div>
+                                    <div class="row">
+                                         <div class="col-md-11"></div>
+                                         <div class="col-md-1">
+                                            <button class="btn btn-primary pull-right " ng-click="editor.addNewLogicCondition()">
+                                              <span class="glyphicon glyphicon-plus-sign" ></span>
+                                            </button> 
+                                        </div>
+                                   </div>
+                                  </br>
+                                  </br>
+                             <!--  </div> -->
+                          <div class="modal-footer">
+                            </br>
+                             </br>
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true" 
+                                      ng-click="editor.applyPageDependencies(editor.selectedPage)">Apply</button>
+                              <button type="button" class="close pull-left" data-dismiss="modal" aria-hidden="true" >
+                                Cancel
+                                </button>
+                          </div>
+              </div>
+      </div>
+
+{% endverbatim %} 

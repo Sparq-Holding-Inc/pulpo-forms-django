@@ -1,0 +1,30 @@
+{% verbatim %} 
+<div class="container" style= "width:100%">
+    <div class="row" style ="margin-bottom:0.5%;" >
+        <!-- Creates a button for each field type -->
+        <button type="button"
+            ng-repeat="(field_type_id, field_type_name) in editor.FieldTypes"            
+            class="btn btn-info btn-block regular-link"
+            id="{{field_type_id}}"
+            ng-click="editor.addField(field_type_id)">
+            {{field_type_name}}
+        </button>
+        <hr/>
+        <!-- Permanent buttons -->
+        <a class="btn btn-warning btn-block" 
+            ng-hide="editor.isNewForm()" 
+            target="_blank" 
+            href= "preview#?form={{editor.form.id}}&ver={{editor.version.number}}"
+            id="preview">
+            <span class="glyphicon glyphicon-eye-open" />
+            Preview
+        </a>
+        <button type="button" 
+            class= "btn btn-info btn-block" 
+            ng-click="editor.addPage()"
+            id="new_page">
+            New Page
+        </button>
+    </div>
+</div>
+{% endverbatim %} 

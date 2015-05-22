@@ -1,0 +1,132 @@
+{%extends 'base.html' %}
+{% load staticfiles sekizai_tags load_fields_assets %}
+
+{%block styles%}
+
+{% endblock %}
+
+{%block content%}
+	<div id="page-wrapper" ng-controller="EditorCtrl as editor">
+        {% verbatim %}
+        <div class="container-fluid">
+          	<div ng-include="'select_modal'"></div> 	<!-- checkbox option modal and tooltip -->
+          	<div ng-include="'logic_modal'"></div>    	<!--modal goes here to skip affix property-->
+          	<div ng-include="'logic_page_modal'"></div>
+		  	<div ng-include="'tooltip_modal'"></div>    	<!--modal goes here to skip affix property-->
+		  	<div ng-include="'post_submit_modal'"></div>
+            <div class="row">	           		 
+                <div class=" col-md-7">
+	                <div class="row" style="margin-left:8%;">
+	                    <form class="panel panel-primary" form role="form" name="userForm">
+	                        <div class="panel-heading text-center">
+                                <h1>Title:</h1>
+                                <input name="title"  class="form-control" type="text" ng-model="editor.form.title"
+                                    maxlength="100" required/>
+                                <div class="alert alert-info" ng-show= "userForm.title.$error.required"> 
+                                	Please enter a title!
+                                </div>
+                                <div ng-cloak class="text-center">
+                                	<label> Slug: {{editor.form.slug}}</label>
+                            	</div>
+                            </div>
+                            
+                            <div role="form" class="panel-body" >
+                                <div  ng-repeat="page in editor.pages"  ng-click="editor.selectPage($index)" ng-class="{'selected-page':page==editor.selectedPage}"> 
+                                    <div ng-cloak class="pull-right">
+                                        <label>Page {{$index + 1}}</label>
+                                        <button class="btn" ng-click="editor.deletePage($index)"
+                                                style="background-color:transparent;padding:0;">
+                                            <span class="glyphicon glyphicon-remove"></span>
+                                        </button>
+                                    </div>
+                                    <div class="text-center">
+                                        <label>Subtitle: </label>
+                                        <input type="text" ng-model="page.subTitle"/>   
+                                    </div>
+                                    <ul ui-sortable ng-model="page.fields" class="panel-body list-body" style="list-style-type: none;">
+	                                    <li ng-repeat="question in page.fields"  ng-class="{'selected-field':question==editor.selectedField}" ng-click="editor.selectField($parent.$index, $index)"
+	                                            style="padding:10px;" itemcell class="field-color">
+	                                        <button class="btn pull-right" ng-click="editor.deleteField($parent.$index, $index)"
+	                                                style="background-color:transparent;padding:0;">
+	                                            <span class="glyphicon glyphicon-remove"></span>
+	                                        </button>
+	                                        <div class="form-group" >
+	                                            <div ng-include="'field_edit/' + question.field_type"></div>
+	                                        </div>
+	                                    </li>
+                                    </ul>
+                                    <hr/>
+                                </div>
+                                
+                                <div class="text-right">
+                                    <button type="submit" 
+                                            ng-click="editor.submitForm()"
+                                            ng-confirm-click="Are you sure you want to publish?"
+                                            class="btn btn-default" 
+                                            ng-disabled="userForm.$invalid">
+                                        Publish
+                                    </button>
+                                    <button type="submit" 
+                                            ng-click="editor.saveForm()"
+                                            class="btn btn-default" 
+                                            ng-disabled="userForm.$invalid">
+                                        Save
+                                    </button>
+                              	    <a href="main" 
+                                            class="btn btn-default"
+                                            onclick="return confirmation();">
+                                        Discard changes
+                                    </a>
+                                </div>
+                            </div>
+	                    </form>
+	                    </br> 
+		                </br>
+		                </br>
+                    </div>
+                </div>
+                <div class="col-md-4"  >     
+                	<div data-spy="affix"> 
+		                <div class="row">                  
+		                     <div  ng-include="'modify_input'" style= "margin-left:6%; width:80%; min-width:390px; max-width:500px;"></div>      
+		                </div>
+		            </div>
+                </div>
+            </div>
+         </div>
+    </div> <!-- div de page-wrapper -->
+    {%endverbatim%}
+{%endblock%} 
+
+{%block scripts%}
+    {% addtoblock "js" %}
+    <script src={% static "js/app.js" %}></script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+    <script src={% static "js/services/resources.js" %}></script>
+    {% endaddtoblock %}
+	{% addtoblock "js" %}
+    <script src={% static "js/editorCtrl.js" %}></script>
+    {% endaddtoblock %}
+
+	{% fields_assets_block %}
+
+    {% addtoblock "js" %}   
+    <script type="text/javascript">
+		$(document).ready(function(){ 
+			$("#myTab li:eq(0) a").tab('show');
+		});
+	</script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+    <script type="text/javascript">
+        function confirmation(action){
+            if (confirm("Are you sure you want to discard changes?")){
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+	{% endaddtoblock %}
+{%endblock%}

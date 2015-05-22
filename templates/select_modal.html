@@ -1,0 +1,24 @@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Select Options</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    Write down an option per line.
+                </div>
+                <div>
+                   <textarea ng-model="editor.optionsAdded" ng-list="&#10;" ng-trim="false" class="form-control" rows="3" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" ng-click="editor.applyOptions()" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

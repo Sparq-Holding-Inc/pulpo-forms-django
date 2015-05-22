@@ -1,0 +1,17 @@
+{%extends 'fields/field_edit_template_base.html' %}
+{%block field%}
+    {% verbatim %} 
+    <button style="border:none;background:none" ng-show="question.tooltip!=undefined && question.tooltip!=''" tooltip="{{question.tooltip}}" tooltip-trigger tooltip-placement="top">
+        <span class="glyphicon glyphicon-info-sign"></span>
+    </button>
+
+    <div ng-repeat ="option in question.options" >
+	    <div class="checkbox"  ng-required="question.required">
+		    <label>
+		      <input type="checkbox" checklist-model="question.answer" 
+                checklist-value="option.id" ng-disabled="true"> {{option.label}}
+		    </label>
+	 	</div>
+    </div>
+    {% endverbatim %} 
+{%endblock%}

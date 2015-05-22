@@ -1,0 +1,11 @@
+{%extends 'fields/field_edit_template_base.html' %}
+{%block field%}
+    {% verbatim %}
+    <button style="border:none;background:none" ng-show="question.tooltip!=undefined && question.tooltip!=''" tooltip="{{question.tooltip}}" tooltip-trigger tooltip-placement="top">
+         <span class="glyphicon glyphicon-info-sign"></span>
+     </button>
+     <input  class="form-control"  type="text" pattern="[0-9]{8}"  ng-model="question.answer[0]"
+    	ng-disabled = "true"
+    	/>   
+	{% endverbatim %} 
+{%endblock%}

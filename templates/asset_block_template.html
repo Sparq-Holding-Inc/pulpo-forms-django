@@ -1,0 +1,19 @@
+{% load sekizai_tags %}
+
+{% for asset_route in asset_list %}
+	{% addtoblock "js" %}
+	<script src="{{ asset_route }}"></script>
+	{% endaddtoblock %}
+{% endfor %}
+
+{% for asset_route in non_static_assets %}
+	{% addtoblock "jsUnc" %}
+	<script src="{{ asset_route }}"></script>
+	{% endaddtoblock %}
+{% endfor %}
+
+{% for asset_route in style_list %}
+	{% addtoblock "css" %}
+	<link rel="stylesheet" type="text/css" href="{{ asset_route }}">
+	{% endaddtoblock %}
+{% endfor %}
