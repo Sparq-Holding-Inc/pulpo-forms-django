@@ -39,6 +39,23 @@ Dynamic Forms provides several useful functionalities and characteristics for su
       'dynamicForms',
     )
 ```
+
+* Add the ``FIELD_FILES`` to your project's settings to include the provided fields, plus any other field defined in another app:
+```
+  FIELD_FILES = (
+    'pulpo_forms.fieldtypes.TextField',
+    'pulpo_forms.fieldtypes.TextAreaField',
+    'pulpo_forms.fieldtypes.EmailField',
+    'pulpo_forms.fieldtypes.CheckboxField',
+    'pulpo_forms.fieldtypes.SelectField',
+    'pulpo_forms.fieldtypes.GeoField',
+    'pulpo_forms.fieldtypes.NumberField',
+    'pulpo_forms.fieldtypes.CIField',
+    'pulpo_forms.fieldtypes.FileField',
+    'other_app.fields',
+)
+```
+
 * Add ``'dynamicForms.middlets.ValidationErrorToHttpErrorMiddleware'`` to the ``MIDDLEWARE_CLASSES`` of your project's settings:
 ```
     MIDDLEWARE_CLASSES = (
