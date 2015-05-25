@@ -1,5 +1,5 @@
 # pulpo-forms-django
-Dynamic Forms is a Django app capable of creating powerful surveys with many different field types, multi path logic for fields and pages and statistical analysis of responses.
+Pulpo Forms is a Django app capable of creating powerful surveys with many different field types, multi path logic for fields and pages and statistical analysis of responses.
 
 ## Requirements
 * Django 1.8
@@ -7,7 +7,7 @@ Dynamic Forms is a Django app capable of creating powerful surveys with many dif
 * AngularJS 1.3.9
 
 ## Features
-Dynamic Forms provides several useful functionalities and characteristics for survey creation.
+Pulpo Forms provides several useful functionalities and characteristics for survey creation.
 
 * Support for multi page surveys with different field types.
 * Multi path logic for both fields and pages
@@ -24,19 +24,13 @@ Dynamic Forms provides several useful functionalities and characteristics for su
 
 ## Getting Started
 
-### Installation
-
-* Install Dynamic Forms with the Python package manager:
-```
-  pip install dynamic-forms
-```
 ### Settings
 
-* Add ``'dynamicForms'`` to the ``INSTALLED_APPS`` of your project's settings:
+* Add ``'pulpo_forms'`` to the ``INSTALLED_APPS`` of your project's settings:
 ```
     INSTALLED_APPS = (
       # other apps
-      'dynamicForms',
+      'pulpo_forms',
     )
 ```
 
@@ -56,11 +50,11 @@ Dynamic Forms provides several useful functionalities and characteristics for su
 )
 ```
 
-* Add ``'dynamicForms.middlets.ValidationErrorToHttpErrorMiddleware'`` to the ``MIDDLEWARE_CLASSES`` of your project's settings:
+* Add ``'pulpo_forms.middlets.ValidationErrorToHttpErrorMiddleware'`` to the ``MIDDLEWARE_CLASSES`` of your project's settings:
 ```
     MIDDLEWARE_CLASSES = (
       # other
-      'dynamicForms.middlets.ValidationErrorToHttpErrorMiddleware',
+      'pulpo_forms.middlets.ValidationErrorToHttpErrorMiddleware',
     )
 ```
 * Define the base url you want and add it to your project's settings: 
@@ -78,16 +72,16 @@ Dynamic Forms provides several useful functionalities and characteristics for su
 * Finally, in your project's ``urls.py`` add:
 ```
     # other imports
-    import dynamicForms
+    import pulpo_forms
 
     urlpatterns = patterns('',
         # other patterns
-        url(r'^<base_url>/', include('dynamicForms.urls'), name='base'),
+        url(r'^<base_url>/', include('pulpo_forms.urls'), name='base'),
     )
 ```
 ### Model field
 
-Dynamic Forms supports adding the items of models of other applications as combobox options. This is called ``ModelField``.
+Pulpo Forms supports adding the items of models of other applications as combobox options. This is called ``ModelField``.
 For this to work it is necessary to [*define a new field type*](#fields). that extends the abstract class ``ModelField`` and which sets the *model* attribute to the model class whose items shall be shown.
 
 > Note:
@@ -102,7 +96,7 @@ Each of the field types that belong to this framework has the following componen
 
 **Python class**
 
-  Each field type must have a Python class. This class must extend the abstract class ``Field`` (implemented in ``dynamicForms.fieldtypes.Field.py``) or one of its subclasses.
+  Each field type must have a Python class. This class must extend the abstract class ``Field`` (implemented in ``pulpo_forms.fieldtypes.Field.py``) or one of its subclasses.
   This class will contain all the methods associated to this field type like validations, statistics operations, etc. It will also contain the paths to the HTML templates and JavaScript/CSS files associated with this field type.
 
 **JavaScript files**
@@ -147,8 +141,7 @@ This means that for a new field type to be supported, it has to be registered in
 
 ### Creating a new field type
 
-It is pretty easy to define a new type of field. Basically, it consists in creating the necessary components detailed in **Field Components**.
-And add a line to the settings of your project::
+To define a new field type you need to create the necessary components detailed in [*Field Components*](#field-components), and add a line to the settings of your project:
 ```
     FIELD_FILES=(
         #other fields,
