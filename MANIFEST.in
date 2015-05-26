@@ -1,0 +1,6 @@
+include LICENSE
+include README.rst
+global-include *.py
+recursive-include pulpo_forms/static *
+recursive-include pulpo_forms/templates *
+recursive-include pulpo_forms/testing *
