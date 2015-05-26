@@ -2,8 +2,8 @@
 Pulpo Forms is a Django app capable of creating powerful surveys with many different field types, multi path logic for fields and pages and statistical analysis of responses.
 
 ## Requirements
-* Django 1.8
-* Django Rest Framework 3.1.1
+* Django >= 1.6
+* Django Rest Framework >= 3.1.1
 * AngularJS 1.3.9
 
 ## Features
