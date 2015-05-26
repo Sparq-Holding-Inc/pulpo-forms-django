@@ -24,6 +24,12 @@ Pulpo Forms provides several useful functionalities and characteristics for surv
 
 ## Getting Started
 
+### Installation
+
+Install Pulpo Forms with the Python package manager:
+```
+	pip install pulpo-forms
+```
 ### Settings
 
 * Add ``'pulpo_forms'`` to the ``INSTALLED_APPS`` of your project's settings:
