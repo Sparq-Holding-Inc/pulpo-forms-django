@@ -94,6 +94,9 @@ For this to work it is necessary to [*define a new field type*](#fields). that e
 >
 >   It is not yet supported to filter these items. It should also have a JavaScript constructor class but just needs to redefine the properties.html template to show the correct name.
 
+## Rendering forms
+To render the forms you should use the [Pulpo Forms Angular directive](https://github.com/pulpocoders/pulpo-forms-angular)
+
 ## Fields
 
 ### Field components
