@@ -22,6 +22,14 @@ Pulpo Forms provides several useful functionalities and characteristics for surv
 * Export of statistics in PDF format.
 * [AngularJS module](https://github.com/pulpocoders/kaurna-angular "Kaurna Angular") with tools to embed the forms in web pages.
 
+
+## Demo
+http://demo.pulpoforms.octobot.io/pulpo/
+
+User: pulpo
+Password: pulpo123
+
+
 ## Getting Started
 
 ### Installation
